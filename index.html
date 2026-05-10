@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeployBot</title>
+  <meta name="description" content="DeployBot - AI deployment agent chat interface">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="logo" aria-label="DeployBot home">
+      <span class="logo-icon" aria-hidden="true">🚀</span>
+      <span class="logo-text">DeployBot</span>
+    </div>
+    <button id="menuBtn" class="menu-btn" type="button" aria-label="Open connectors menu">☰</button>
+  </header>
+
+  <main id="chatWindow" aria-live="polite">
+    <div id="emptyState" class="empty-state">
+      <div class="empty-icon" aria-hidden="true">🤖</div>
+      <h2>Welcome to DeployBot</h2>
+      <p>Upload your code or type a command to deploy</p>
+      <p class="hint">Example: “Deploy my React app to Render”</p>
+    </div>
+  </main>
+
+  <div id="inputArea">
+    <div id="fileChip" class="file-chip hidden" aria-live="polite"></div>
+
+    <div class="input-row">
+      <button id="attachBtn" class="attach-btn" type="button" title="Attach file" aria-label="Attach file">📎</button>
+      <input type="file" id="fileInput" hidden accept="*/*">
+      <textarea
+        id="messageInput"
+        placeholder="Type a command... e.g. Deploy my app to Vercel"
+        rows="1"
+        aria-label="Message input"
+      ></textarea>
+      <button id="sendBtn" class="send-btn" type="button" disabled aria-label="Send message">➤</button>
+    </div>
+  </div>
+
+  <div id="sidebarOverlay" class="overlay hidden"></div>
+
+  <aside id="sidebar" class="sidebar hidden" aria-hidden="true">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Connectors</span>
+      <button id="closeSidebar" type="button" aria-label="Close connectors menu">✕</button>
+    </div>
+    <div id="connectorsList"></div>
+  </aside>
+
+  <div id="connectorModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <span id="modalTitle">Connect Platform</span>
+        <button id="closeModal" type="button" aria-label="Close modal">✕</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
